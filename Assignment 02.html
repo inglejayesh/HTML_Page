@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Assignment 02</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h3>Assignment 02:</h3>
+        <label>Enter a Sentence :</label>
+        <div> 
+            <input type = "text" name = "sentence" id="sentence" />
+            <small class="errorMsg" id="errorInSentence"></small>
+        </div>
+
+        <label>Enter a Letter :</label>
+        <div> 
+            <input type="text" name="letter" id="letter" value = "" maxlength = "1" />
+            <small class="errorMsg" id="errorInLetter"></small>
+        </div>
+        <div>
+            <button onclick="validateForm();">Submit</button>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
