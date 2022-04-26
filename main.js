@@ -1,8 +1,3 @@
-//sentence regex
-//letter regex
-//finding the letter
-//slice the string
-
 function clearForm() {
     document.getElementById('sentence').value = '';
     document.getElementById('letter').value = '';
