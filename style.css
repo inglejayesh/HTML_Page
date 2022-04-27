@@ -56,7 +56,9 @@ button {
 .errorMsg{
 	color: red;
 }
-
+.trim{
+	color: red;
+}
 .inputContrl{
 	display: flex;
 }
