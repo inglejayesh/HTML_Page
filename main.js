@@ -1,45 +1,53 @@
-function clearForm() {
+/*function clearForm() {
     document.getElementById('sentence').value = '';
     document.getElementById('letter').value = '';
+  }*/
+
+//declaring global
+const trimErrorMsg = "The letter does not exist in the sentence";
+
+function validateForm() {
+  var _sentence = document.getElementById("sentence").value;
+  var _letter = document.getElementById("letter").value;
+  let _isValid = true;
+
+  document.getElementById("errorInSentence").innerHTML = "";
+  document.getElementById("errorInLetter").innerHTML = "";
+  document.getElementById("trimSentence").innerHTML = "";
+
+  //regex
+  var sentenceRegex = /([a-zA-Z]+[\s]*)*/;
+  var letterRegex = /^[a-zA-z]$/;
+
+  if (_sentence.trim() == "") {
+    document.getElementById("errorInSentence").innerHTML ="*Blank are not allowed";
+    _isValid = false;
+  } else if (_sentence.length > 500 || !sentenceRegex.test(_sentence)) {
+    document.getElementById("errorInSentence").innerHTML ="*Please Enter Valid Sentence";
+    _isValid = false;
   }
 
-function validateForm()
-{
-    var _sentence = document.getElementById('sentence').value;
-    var _letter = document.getElementById('letter').value;
-
-    document.getElementById('errorInSentence').innerHTML = '';
-    document.getElementById('errorInLetter').innerHTML = '';
-
-    var sentenceRegex = /^([a-zA-Z]+[\s]*){1,5}$/;
-    var letterRegex = /^[a-zA-z]$/;
-    
-
-    if (_sentence.trim() == "") {
-        document.getElementById('errorInSentence').innerHTML = '*Blank are not allowed';
-        _isValid = false;
-      } else if (_sentence.length > 100 || !sentenceRegex.test(_sentence)) {
-        document.getElementById('errorInSentence').innerHTML = "*Please Enter Valid Sentence";
-        _isValid = false;
-      }
-
-      if (_letter.trim() == "") {
-        document.getElementById('errorInLetter').innerHTML = '*Blank are not allowed';
-        _isValid = false;
-      } else if (_letter.length > 1 || !letterRegex.test(_letter)) {
-        document.getElementById('errorInLetter').innerHTML = "*Please Enter Valid Sentence";
-        _isValid = false;
-      }
+  if (_letter.trim() == "") {
+    document.getElementById("errorInLetter").innerHTML ="*Blank are not allowed";
+    _isValid = false;
+  } else if (_letter.length > 1 || !letterRegex.test(_letter)) {
+    document.getElementById("errorInLetter").innerHTML ="*Please Enter Valid Sentence";
+    _isValid = false;
+  }
+  return _isValid;
 }
 
-let index = str.indexOf('@');
-if(index==-1)
-{
-
- document.getElementById("demo").innerHTML = "The letter does not exist in the sentence";
-
+//after validation submit it
+function submitForm() {
+  if (validateForm()) {
+    trimSentence();
+  }
 }
-else
-{
-document.getElementById("demo").innerHTML = str.slice(index+1,str.length); 
+
+//triming the result to display
+function trimSentence() {
+  var _sentence = document.getElementById("sentence").value;
+  var _letter = document.getElementById("letter").value;
+  let index = _sentence.indexOf(_letter); //to check the letter present in sentence
+  document.getElementById("trimSentence").innerHTML = index == -1 ? trimErrorMsg : _sentence.slice(index + 1, _sentence.length); //validating the letter in sentence
 }
