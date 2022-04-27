@@ -6,6 +6,7 @@
     </head>
     <body>
         <h3>Assignment 02:</h3>
+        <!--form starts from here-->
         <label>Enter a Sentence :</label>
         <div> 
             <input type = "text" name = "sentence" id="sentence" />
@@ -18,8 +19,14 @@
             <small class="errorMsg" id="errorInLetter"></small>
         </div>
         <div>
-            <button onclick="validateForm();">Submit</button>
+            <button onclick="submitForm();">Submit</button>
         </div>
+        <p></p> 
+        <div>
+            <label class="trim">Result :</label>
+            <small id="trimSentence"></small>
+        </div>
+
         <script src="main.js"></script>
     </body>
 </html>
