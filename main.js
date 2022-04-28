@@ -13,7 +13,7 @@ function validateForm() {
 
   document.getElementById("errorInSentence").innerHTML = "";
   document.getElementById("errorInLetter").innerHTML = "";
-  document.getElementById("trimSentence").innerHTML = "";
+  document.getElementById("result").innerHTML = "";
 
   //regex
   var sentenceRegex = /([a-zA-Z]+[\s]*)*/;
@@ -40,14 +40,14 @@ function validateForm() {
 //after validation submit it
 function submitForm() {
   if (validateForm()) {
-    trimSentence();
+    result();
   }
 }
 
 //triming the result to display
-function trimSentence() {
+function result() {
   var _sentence = document.getElementById("sentence").value;
   var _letter = document.getElementById("letter").value;
   let index = _sentence.indexOf(_letter); //to check the letter present in sentence
-  document.getElementById("trimSentence").innerHTML = index == -1 ? trimErrorMsg : _sentence.slice(index + 1, _sentence.length); //validating the letter in sentence
+  document.getElementById("result").innerHTML = index == -1 ? trimErrorMsg : _sentence.slice(index + 1, _sentence.length); //validating the letter in sentence
 }
